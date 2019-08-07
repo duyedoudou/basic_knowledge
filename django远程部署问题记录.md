@@ -1,4 +1,4 @@
-远程部署问题记录：
+# Django部署到远程服务器步骤记录
 
 0、上传本地文件到服务器：
 
@@ -22,6 +22,8 @@ pip3 install --upgrade pip
 解决是卸载pip3：`sudo apt-get remove python3-pip`
 
 重新安装：`apt-get install python3-pip`
+
+------
 
 3、**第二天上午：**
 
@@ -47,6 +49,8 @@ apt-get install nginx            # 装nginx
 apt-get install python3-pip      # pip3
 pip3 install virtualenv          # 虚拟环境
 ```
+
+
 
 3、启动nginx
 
@@ -106,6 +110,8 @@ STATIC_URL = '/static/'
 # 加入下面的配置
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')  #STATIC_ROOT 指明了静态文件的收集目录
 ```
+
+
 
 6、项目文件夹下，将项目中的静态文件收集到static文件夹下，以方便Nginx访问
 

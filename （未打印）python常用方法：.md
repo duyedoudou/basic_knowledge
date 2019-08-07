@@ -28,30 +28,3 @@ help(math.pi)
 
 
 
-全排列&组合：
-
-```python
-from itertools import permutations,combinations
-c = [1,2,3,4]
-lisss = list(permutations(c,2)) # 排列
-lisss2 = list(combinations(c,2))# 组合 
-print(lisss)
-print(lisss2)
-```
-
-```
-[(1, 2), (1, 3), (1, 4), (2, 1), (2, 3), (2, 4), (3, 1), (3, 2), (3, 4), (4, 1), (4, 2), (4, 3)]
-[(1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
-```
-
-斐波那契数列？
-
-```python
-def fib (num):
-    numlist = [0,1]
-    for i in range(num-2):
-        numlist.append(numlist[-2]+numlist[-1])
-    return numlist
-
-```
-
