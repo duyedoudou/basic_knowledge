@@ -1,10 +1,18 @@
 # Django部署到远程服务器步骤记录
 
-0、上传本地文件到服务器：
+0.0、上传本地文件到服务器：
 
 ```
 scp [本地文件目录]  [服务器用户名]@[服务器名]:/[服务器上文件路径]
 例如：scp -r 文件目录  root@47.94.129.71:/home
+```
+
+0.1、将远程/root/articaleFetch/dist目录下文件和文件夹拷贝到dist文件夹
+
+```
+scp root@47.94.129.71:/root/articleFetch/dist/*/* ./dist/
+scp -r root@47.94.129.71:/root/articleFetch/dist/ ./dist/
+
 ```
 
 1、重装系统后出现warning@@@@@的信息，解决：.ssh/known_hosts文件中**记录远程主机的公钥**，之前重装个系统，而保存的公钥还是未重装系统的系统公钥，在ssh链接的时候首先会验证公钥，如果公钥不对，那么就会报错，使用shh-keygen 命令`ssh-keygen -R 加IP地址`
@@ -187,6 +195,20 @@ nginx -s reload     # 非常重要！！栽坑两天！！
 (env_site) root@iZ2ze1y6kf6efdv2i5q4egZ:/home/mysite/redis-3.2.6# cd src
 (env_site) root@iZ2ze1y6kf6efdv2i5q4egZ:/home/mysite/redis-3.2.6/src# ./redis-server # 启动
 ```
+
+11、补充：
+
+从github拉代码。
+
+这里我选择`/home/mysite`，mysite目录默认是没有的，需要你创建，然后进入到此目录中，用Git将网站`pull`下来，这里我以我的已经开源到`github`上的`Django博客`为例，下载网站程序的方法如下：
+
+```
+git init
+git remote add origin https://github.com/mxdshr/DjangoEast.git
+git pull origin master
+```
+
+
 
 参考：
 
