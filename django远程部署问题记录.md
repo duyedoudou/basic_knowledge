@@ -131,7 +131,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')  #STATIC_ROOT 指明了静态文�
 
 ```
 (env_site) root@iZ2ze1y6kf6efdv2i5q4egZ:d# touch demo_site
-(env_site) root@iZ2ze1y6kf6efdv2i5q4egZ:/etc/nginx/sites-available# vim demo_site 
+(env_site) root@iZ2ze1y6kf6efdv2i5q4egZ:# vim demo_site 
 ```
 
 文件内容为：
