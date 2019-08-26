@@ -29,3 +29,4 @@ print(arr)
 [[1, 2, 3, 4], [2, 3, 4, 2], [2, 1, 3, 4], [1, 5, 4, 6]]
 ```
 
+![image-20190826101002053](/Users/mac/Library/Application Support/typora-user-images/image-20190826101002053.png)
