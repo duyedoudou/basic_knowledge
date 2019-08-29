@@ -219,3 +219,17 @@ matrix = list(zip(*matrix[::-1]))   # 90度逆时针旋转剩下的矩阵元素
 # 元素除了是 0、空、None、False 外都算 True。
 ```
 
+#### ascii转化：
+
+```python
+a = '!'
+b = 97
+print(ord(a))
+print(chr(b))
+```
+
+```
+33
+a
+```
+
