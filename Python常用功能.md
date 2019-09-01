@@ -329,6 +329,10 @@ dict_values([[3, 7], [6, 5]])
 dict_values([6, 3])
 ```
 
+
+
+
+
 #### enumerate() 函数:
 
 > #### 用于将一个可遍历的数据对象组合为一个索引序列，同时列出数据和数据下标
@@ -342,5 +346,158 @@ print(list(enumerate(a,start=1)))  # 下标从1开始
 ```
 [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
 [(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]
+```
+
+#### 合并两个字典：
+
+```python
+d1 = {'dog':3,'cat':5}
+d2 = {'miemie':2,'gigi':7}
+d1.update(d2)
+print(d1)
+```
+
+```
+{'dog': 3, 'cat': 5, 'miemie': 2, 'gigi': 7}
+```
+
+#### 使用zip实现字典的键值反转：
+
+```Python
+d1 = {'dog': 3, 'cat': 5, 'miemie': 2, 'gigi': 7}
+d2 = dict(zip(d1.values(),d1.keys()))
+print(d2)
+```
+
+```
+{3: 'dog', 5: 'cat', 2: 'miemie', 7: 'gigi'}
+```
+
+#### zip合并不同类型，只要可迭代就行：
+
+```python 
+a = [1,2,3]
+b = 'edw'
+c = list(zip(a,b))
+d = dict(zip(a,b))
+print(c)
+print(d)
+```
+
+```
+[(1, 'e'), (2, 'd'), (3, 'w')]
+{1: 'e', 2: 'd', 3: 'w'}
+```
+
+
+
+
+
+
+
+#### operator 里的 itemgetter：
+
+> 对字典组成的列表排序，按照字典的某一个/几个字段。
+
+```python
+rows = [
+    {'fname': 'Big', 'lname': 'Jones', 'uid': 1003},
+    {'fname': 'David', 'lname': 'Beazley', 'uid': 1002},
+    {'fname': 'John', 'lname': 'Cleese', 'uid': 1001},
+    {'fname': 'Big', 'lname': 'Aones', 'uid': 1004}]
+from operator import itemgetter
+rows_sortby_fname = sorted(rows,key=itemgetter('fname'))
+print(rows_sortby_fname)
+print('--')
+rows_sortby_fname2 = sorted(rows,key=itemgetter('fname','lname'))
+print(rows_sortby_fname2)
+```
+
+```
+[{'fname': 'Big', 'lname': 'Jones', 'uid': 1003},
+ {'fname': 'Big', 'lname': 'Aones', 'uid': 1004}, 
+ {'fname': 'David', 'lname': 'Beazley', 'uid': 1002}, 
+ {'fname': 'John', 'lname': 'Cleese', 'uid': 1001}]
+ --
+[{'fname': 'Big', 'lname': 'Aones', 'uid': 1004}, 
+{'fname': 'Big', 'lname': 'Jones', 'uid': 1003}, 
+{'fname': 'David', 'lname': 'Beazley', 'uid': 1002}, 
+{'fname': 'John', 'lname': 'Cleese', 'uid': 1001}]
+```
+
+#### 一道关于lambda函数的经典面试题:
+
+#### list[0]能输出什么？这个主要考函数对象列表，千万不要和列表表达式搞混了啊
+
+```python
+list = [ lambda x:x*x for x in range(1, 3)]
+print(list)
+print(list[0])
+print(list[1](5))
+```
+
+```
+[<function <listcomp>.<lambda> at 0x7f3029c45ea0>, <function <listcomp>.<lambda> at 0x7f3029c45e18>]
+<function <listcomp>.<lambda> at 0x7f3029c45ea0>
+25
+```
+
+#### 统计字符串中有多少个某字母/字符串：
+
+```python 
+a = 'wwwderft'
+print(a.count('w'))
+print(a.count('er'))
+```
+
+```
+3
+1
+```
+
+#### 题目：
+
+> 统计字符串A中有多少个字符也在字符串B中可以找到
+>
+> 分析：
+>
+> python自带的string.count(char)函数的作用是统计一个字符串string含有字符char的数量。在本例中strB相当于char的一个参数列表["a", "A"], map函数先统计strA中字符a的数量，再统计strA中字符A的数量，获得列表[1, 3], 然后将它们相加，即可获得字符串A中总共有多少字符可以在B中找到。
+
+```python 
+strA = "aAAAbBCC"
+strB = "aA"
+print(sum(map(strA.count,strB)))
+```
+
+```
+4
+```
+
+#### reduce()函数：
+
+> 用传给 reduce 中的函数 function先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。
+
+```Python
+from functools import reduce
+a = [1,2,3,4]
+b = reduce(lambda x,y:x+y,a)
+print(b)
+```
+
+```
+10
+```
+
+#### filter()函数：
+
+> 过滤序列，过滤掉不符合条件的元素，返回由符合条件元素组成的新列表
+
+```Python
+a = list(filter(lambda x:x%2 == 0,range(1,10)))
+print(a)
+```
+
+```
+[2, 4, 6, 8]
 ```
 
