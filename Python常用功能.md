@@ -233,3 +233,114 @@ print(chr(b))
 a
 ```
 
+#### 生成空集合：
+
+```
+a = set() # 不能用{}，{}是用来生成空字典的
+```
+
+#### 集合的添加元素：
+
+```
+a.add('ws')
+```
+
+#### .index()方法：
+
+```python 
+a = 'dogdog'
+print(a.index('g'))
+print(a.index('og'))
+print(list(map(a.index,a)))
+```
+
+```
+2
+1
+[0, 1, 2, 0, 1, 2]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### sort和sorted:
+
+```python 
+# 字符串没有sort()方法
+s = 'wre'
+s.sort()
+```
+
+```
+AttributeError: 'str' object has no attribute 'sort'
+```
+
+```Python
+# ！但是，可以使用sorted对str进行排序，
+# 生成list格式
+s = 'wre'
+print(sorted(s))
+```
+
+```
+['e', 'r', 'w']
+```
+
+#### collections.defaultdict():
+
+> 生成一个字典，并默认好了字典的值的数据类型，如collections.defaultdict(list)  添加新的键，其值都是默认放在列表里。
+
+```python
+from collections import defaultdict
+dic = defaultdict(list)
+dic[2].append(3)
+dic[2].append(4)
+dic[2].append(3)
+print(dic)
+dicc = dict(dic)
+print(dicc)
+```
+
+```
+defaultdict(<class 'list'>, {2: [3, 4, 3]})
+{2: [3, 4, 3]}
+```
+
+#### 输出字典的值到 【列表】：dic.values()
+
+```Python
+dic = {2:[3,7],4:[6,5]}
+dic2 = {4:6,2:3}
+print(dic.values())
+print(dic2.values())
+```
+
+```
+dict_values([[3, 7], [6, 5]])
+dict_values([6, 3])
+```
+
+#### enumerate() 函数:
+
+> #### 用于将一个可遍历的数据对象组合为一个索引序列，同时列出数据和数据下标
+
+```python
+a = ['Spring', 'Summer', 'Fall', 'Winter']
+print(list(enumerate(a)))
+print(list(enumerate(a,start=1)))  # 下标从1开始
+```
+
+```
+[(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
+[(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]
+```
+
