@@ -260,11 +260,11 @@ print(list(map(a.index,a)))
 [0, 1, 2, 0, 1, 2]
 ```
 
+#### .find():
 
+与.index（）的区别：
 
-
-
-
+找不到的时候，find（）返回-1；index（）找不到就报错。
 
 
 
@@ -500,4 +500,75 @@ print(a)
 ```
 [2, 4, 6, 8]
 ```
+
+
+
+
+
+
+
+#### 判断字符串是否以‘te’结尾：
+
+```python 
+a = 'wdsdfertr'
+print(a.endswith('rtr'))
+print(a.endswith('twr'))
+```
+
+```
+True
+False
+```
+
+#### 字符串大小写小小的总结：
+
+```Python
+a = 'i love you. Do you know? BIG'
+# 每个单词的首字母大写
+title = a.title()
+print('1、',title)
+# 所有字母大写
+upper = a.upper()
+print('2、',upper)
+# 所有字母小写
+lower = a.lower()
+print('3、',lower)
+# 字符串的第一个字符大写，注意不是第一个字母
+capitalize = a.capitalize()
+print('4、',capitalize)
+# 所有字母大小写互换
+swapcase = a.swapcase()
+print('5、',swapcase)
+```
+
+```
+1、 I Love You. Do You Know? Big
+2、 I LOVE YOU. DO YOU KNOW? BIG
+3、 i love you. do you know? big
+4、 I love you. do you know? big
+5、 I LOVE YOU. dO YOU KNOW? big
+```
+
+#### os.path和sys.path：
+
+> os.path主要用于用户对系统路径的操作。
+>
+> sys.path主要用于python解释器的系统参数的操作。
+
+#### 反转字符串：
+
+```Python
+a = 'dogg'
+print(a[::-1])
+print(''.join(reversed(a)))
+```
+
+```
+ggod
+ggod
+```
+
+#### is和==：
+
+> is通过id判断；==通过value判断。
 
