@@ -124,12 +124,14 @@ Counter({2: 3, 6: 2, 3: 1, 4: 1, 7: 1, 5: 1}) <class 'collections.Counter'>
 # 思路二：使用replace()函数
 a = 'we are happy.'
 a= a.replace(' ','%20')
-print(a)
+print(a)                 
 ```
 
 ```
 we%20are%20happy.
 ```
+
+repalce()还有第三个参数，表示替换几次。
 
 ```Python
 #思路1：先把字符串转成列表，修改后，再拼接回去
