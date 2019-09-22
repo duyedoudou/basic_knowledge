@@ -143,3 +143,118 @@ print(result)
 print(count)
 ```
 
+ __repr__和__str__的思考和理解
+
+```Python
+# 1/使用print,不带别的，调用__str__方法
+class Demo():
+    def __repr__(self):
+        return 'sd'
+    def __str__(self):
+        return 'sss'
+    
+a = Demo()
+print(a)           # 使用print时候，调用重构的str方法
+print(str(a))      # 这句和上句实现的一模一样功能
+```
+
+```
+sss
+sss
+```
+
+```python 
+# 2/使用repr()，调用__repr__方法
+class Demo():
+    def __repr__(self):
+        return 'sd'
+    def __str__(self):
+        return 'sss'
+    
+a = Demo()
+print(repr(a))   # 这样和下边一行输出一样的东西，调用重构的str方法
+a
+```
+
+```
+sd
+```
+
+```python 
+# 3/str比较随和，如果没有__str__,就调用__repr__
+class Demo():
+    def __repr__(self):
+        return 'sd'
+#     def __str__(self):
+#         return 'sss'
+    
+a = Demo()
+print(a)
+```
+
+```
+sd
+```
+
+```Python
+# 如果没有__repr__,不回去找__str__,而是向上层object里找
+class Demo():
+#     def __repr__(self):
+#         return 'sd'
+    def __str__(self):
+        return 'sss'
+    
+a = Demo()
+print(repr(a))
+```
+
+```
+<__main__.Demo object at 0x109b40898>
+```
+
+遍历字典的误区：
+
+```Python
+# 在使用上，for key in a和 for key in a.keys():完全等价
+# 而且在3.几版本之后，字典是有序的
+a = {0:'a',33:'b',2:'c'}
+for i in a:
+    print(i)
+```
+
+格式化，补0
+
+```Python
+# %06d 整数输出,整数的宽度是6位,若不足6位,左边补0
+x = 123
+print('%06d'%x)
+```
+
+```
+000123
+```
+
+```python 
+# %6d 整数输出,整数的宽度是6位,若不足6位,左边补空格
+x = 123
+print('%6d'%x)
+```
+
+```
+   123
+```
+
+```python 
+# %-6d 整数输出,整数的宽度是6位,若不足6位,右you边补空格
+x = 123
+print('%-6d'%x)
+```
+
+```
+123   
+```
+
+```
+# %.6f 输出小数,即保留小数点后6位
+```
+
