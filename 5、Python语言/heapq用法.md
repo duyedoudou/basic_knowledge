@@ -1,4 +1,4 @@
-## Python内置heapq用法：
+## heapq用法：
 
 ```python
 import heapq #载入heap库，heap指的是最小堆
