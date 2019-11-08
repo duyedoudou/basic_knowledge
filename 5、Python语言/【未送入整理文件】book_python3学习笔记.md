@@ -64,3 +64,77 @@ keyword.iskeyword('with')
 
 在交互式模式下，单下划线（_）返回最后一个表达式的结果。
 
+------
+
+2019.10.28
+
+使用 `sys.getsizeof` 方法可以查看 python 对象的内存占用，单位：字节 (byte)
+实际上是调用了 `__sizeof__` 方法：
+
+```python 
+import sys
+
+a = 6
+st = 'word'
+print(sys.getsizeof(s))    
+print(s.__sizeof__())
+print(st.__sizeof__())
+```
+
+```
+28
+28
+53
+```
+
+python可用下划线作为千分位的分隔符，但是不能用逗号
+
+```Python
+a = 34_342_321   # 使用下划线
+print(a)
+b = 34,321,34
+print(b)         # 使用逗号，返回的是tuple 
+```
+
+```
+34342321
+(34, 321, 34)
+```
+
+python对于常用的小数字，解释器会在初始化时候进行预缓存，以提高性能，节省内存开销。3.6版本的预存范围是[-5,256]
+
+```python 
+# is是通过id来判断，==是通过value来判断
+
+a = 5                # 预存范围内
+b = 5
+print(a is b)
+print(id(a),id(b))
+c = 300              # 超预存范围
+d = 300
+print(c is d)
+print(id(c),id(d))
+
+```
+
+```
+True
+4396000608 4396000608
+False
+4431610832 4433545264
+```
+
+3.6新增了f-string支持，阅读体验上更加完整简洁
+
+```Python
+x = 10
+y = 20
+print('{}+{}={}'.format(x,y,x+y))
+print(f'{x}+{y}={x+y}')            # 使用f-string，实现相同的效果
+```
+
+```
+10+20=30
+10+20=30
+```
+
